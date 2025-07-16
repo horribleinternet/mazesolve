@@ -11,10 +11,11 @@ class Maze:
         self.cell_size_x = cell_size_x
         self.cell_size_y = cell_size_y
         self.win = win
-        self.seed = seed
         self.anim_sleep = anim_sleep
         self.color = color
         self.__cells = []
+        if seed is not None:
+            random.seed(seed)
         self.__create_cells()
 
     def __create_cells(self):

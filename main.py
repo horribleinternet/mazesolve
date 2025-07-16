@@ -22,7 +22,7 @@ def main():
     # cell4.draw(400, 100, 450, 150)
     # cell1.draw_move(cell2)
     # cell3.draw_move(cell4, True)
-    maze = Maze(1, 1, rows, cols, cell_size, cell_size, win )
+    maze = Maze(1, 1, rows, cols, cell_size, cell_size, win, 0 )
     win.wait_for_close()
 
 if __name__ == "__main__":
