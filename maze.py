@@ -25,7 +25,8 @@ class Maze:
                 self.__draw_cell(i, j)
         self.__break_entrance_and_exit()
         self.__break_walls_r(0, 0)
-
+        self.__reset_cells_visited()
+    
     def __draw_cell(self, i, j):
         if (i < 0):
             i = self.num_cols + i
@@ -84,3 +85,8 @@ class Maze:
             case 3:
                 self.__cells[i1][j1].has_left_wall = False
                 self.__cells[i2][j2].has_right_wall = False
+
+    def __reset_cells_visited(self):
+        for col in self.__cells:
+            for cell in col:
+                cell.visited = False
