@@ -18,13 +18,13 @@ class Cell:
         self.__tr = Point(x2, y1)
         self.__br = Point(x2, y2)
         if self.has_left_wall:
-            self.__win.draw_line(Line(self.__bl, self.__tl))
+            self.__win.draw_line(Line(self.__bl, self.__tl), color)
         if self.has_top_wall:
-            self.__win.draw_line(Line(self.__tl, self.__tr))
+            self.__win.draw_line(Line(self.__tl, self.__tr), color)
         if self.has_right_wall:
-            self.__win.draw_line(Line(self.__tr, self.__br))
+            self.__win.draw_line(Line(self.__tr, self.__br), color)
         if self.has_bottom_wall:
-            self.__win.draw_line(Line(self.__br, self.__bl))
+            self.__win.draw_line(Line(self.__br, self.__bl), color)
 
     def get_center(self):
         if self.__tl is None or self.__br is None:
