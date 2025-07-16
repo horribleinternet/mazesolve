@@ -12,10 +12,10 @@ def main():
     cell3.has_bottom_wall = False
     cell4 = Cell(win)
     cell4.has_right_wall = False
-    cell1.draw(Point(100, 100), Point(150, 150))
-    cell2.draw(Point(200, 100), Point(250, 150))
-    cell3.draw(Point(300, 100), Point(350, 150))
-    cell4.draw(Point(400, 100), Point(450, 150))
+    cell1.draw(100, 100, 150, 150)
+    cell2.draw(200, 100, 250, 150)
+    cell3.draw(300, 100, 350, 150)
+    cell4.draw(400, 100, 450, 150)
     cell1.draw_move(cell2)
     cell3.draw_move(cell4, True)
     win.wait_for_close()
