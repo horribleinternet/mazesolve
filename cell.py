@@ -1,7 +1,7 @@
 from line import Point, Line
 
 class Cell:
-    def __init__(self, window):
+    def __init__(self, window = None):
         self.__win = window
         self.has_left_wall = True
         self.has_right_wall = True
@@ -17,6 +17,8 @@ class Cell:
         self.__bl = Point(x1, y2)
         self.__tr = Point(x2, y1)
         self.__br = Point(x2, y2)
+        if self.__win is None:
+            return
         if self.has_left_wall:
             self.__win.draw_line(Line(self.__bl, self.__tl), color)
         if self.has_top_wall:
@@ -37,4 +39,5 @@ class Cell:
             color = "gray"
         else:
             color = "red"
-        self.__win.draw_line(Line(self.get_center(), to_cell.get_center()), color)
+        if self.__win is not None:
+            self.__win.draw_line(Line(self.get_center(), to_cell.get_center()), color)
