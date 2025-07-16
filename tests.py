@@ -41,5 +41,15 @@ class Tests(unittest.TestCase):
             num_rows,
         )
 
+    def test_maze_entance_exit(self):
+        num_cols = 20
+        num_rows = 15
+        m1 = Maze(0, 0, num_rows, num_cols, 10, 10)
+        self.assertFalse(m1._Maze__cells[0][0].has_top_wall)
+        self.assertFalse(m1._Maze__cells[-1][-1].has_bottom_wall)
+        self.assertFalse(m1._Maze__cells[19][14].has_bottom_wall)
+        self.assertTrue(m1._Maze__cells[5][5].has_top_wall)
+        self.assertTrue(m1._Maze__cells[10][10].has_bottom_wall)
+
 if __name__ == "__main__":
     unittest.main()
