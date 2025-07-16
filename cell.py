@@ -1,8 +1,9 @@
 from line import Point, Line
 
 class Cell:
-    def __init__(self, window = None):
+    def __init__(self, window = None, back_color = "white"):
         self.__win = window
+        self.back_color = back_color
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -19,14 +20,10 @@ class Cell:
         self.__br = Point(x2, y2)
         if self.__win is None:
             return
-        if self.has_left_wall:
-            self.__win.draw_line(Line(self.__bl, self.__tl), color)
-        if self.has_top_wall:
-            self.__win.draw_line(Line(self.__tl, self.__tr), color)
-        if self.has_right_wall:
-            self.__win.draw_line(Line(self.__tr, self.__br), color)
-        if self.has_bottom_wall:
-            self.__win.draw_line(Line(self.__br, self.__bl), color)
+        self.__win.draw_line(Line(self.__bl, self.__tl), color if self.has_left_wall else self.back_color)
+        self.__win.draw_line(Line(self.__tl, self.__tr), color if self.has_top_wall else self.back_color)
+        self.__win.draw_line(Line(self.__tr, self.__br), color if self.has_right_wall else self.back_color)
+        self.__win.draw_line(Line(self.__br, self.__bl), color if self.has_bottom_wall else self.back_color)
 
     def get_center(self):
         if self.__tl is None or self.__br is None:
