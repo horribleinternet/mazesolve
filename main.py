@@ -16,6 +16,8 @@ def main():
     cell2.draw(Point(200, 100), Point(250, 150))
     cell3.draw(Point(300, 100), Point(350, 150))
     cell4.draw(Point(400, 100), Point(450, 150))
+    cell1.draw_move(cell2)
+    cell3.draw_move(cell4, True)
     win.wait_for_close()
 
 if __name__ == "__main__":
