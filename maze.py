@@ -2,7 +2,7 @@ import time
 from cell import Cell
 
 class Maze:
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win, color = "black", anim_sleep = 0.05):
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win = None, color = "black", anim_sleep = 0.05):
         self.x1 = x1
         self.y1 = y1
         self.num_rows = num_rows
@@ -28,5 +28,7 @@ class Maze:
         self.__animate()
     
     def __animate(self):
+        if self.win is None:
+            return
         self.win.redraw()
         time.sleep(self.anim_sleep)
