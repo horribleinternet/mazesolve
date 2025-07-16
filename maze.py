@@ -26,6 +26,7 @@ class Maze:
         self.__break_entrance_and_exit()
         self.__break_walls_r(0, 0)
         self.__reset_cells_visited()
+        self.solve()
     
     def __draw_cell(self, i, j):
         if (i < 0):
@@ -90,3 +91,34 @@ class Maze:
         for col in self.__cells:
             for cell in col:
                 cell.visited = False
+
+    def solve(self):
+        return self.__solve_r(0, 0, self.num_cols-1, self.num_rows-1)
+
+    def __get_travelable(self, i, j):
+        adjacent = []
+        if i >= 0 and i < self.num_cols - 1 and not self.__cells[i+1][j].visited and not self.__cells[i][j].has_right_wall:
+            adjacent.append((i+1, j))
+        if j >= 0 and j < self.num_rows - 1 and not self.__cells[i][j+1].visited and not self.__cells[i][j].has_bottom_wall:
+            adjacent.append((i, j+1))
+        if i > 0 and i < self.num_cols and not self.__cells[i-1][j].visited and not self.__cells[i][j].has_left_wall:
+            adjacent.append((i-1, j))
+        if j > 0 and j < self.num_rows and not self.__cells[i][j-1].visited and not self.__cells[i][j].has_top_wall:
+            adjacent.append((i, j-1))
+        return adjacent
+       
+    def __solve_r(self, i, j, gi, gj):
+        self.__animate()
+        self.__cells[i][j].visited = True
+        if i == gi and j == gj:
+            return True
+        adjacent = self.__get_travelable(i, j)
+        for ni, nj in adjacent:
+            self.__cells[i][j].draw_move(self.__cells[ni][nj])
+            if self.__solve_r(ni, nj, gi, gj):
+                return True
+            else:
+                self.__cells[i][j].draw_move(self.__cells[ni][nj], True)
+            adjacent = self.__get_travelable(i, j)
+        return False
+
