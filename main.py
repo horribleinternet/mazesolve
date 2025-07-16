@@ -5,8 +5,8 @@ from maze import Maze
 
 def main():
     cell_size = 50
-    rows = 21
-    cols = 28
+    rows = 15
+    cols = 20
     win = Window(cols*cell_size, rows*cell_size)
     # cell1 = Cell(win)
     # cell1.has_left_wall = False
